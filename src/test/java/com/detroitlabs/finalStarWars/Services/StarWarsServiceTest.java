@@ -2,12 +2,19 @@ package com.detroitlabs.finalStarWars.Services;
 
 import com.detroitlabs.finalStarWars.Model.FilmAndCharacterModel.MovieInfo;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
 public class StarWarsServiceTest {
 
+    private StarWarsService testStarWarsService;
+
+    @Before
+    public void create(){
+        testStarWarsService = new StarWarsService();
+    }
 
     @Test
     public void shouldReturn200ResponseCode(){
@@ -25,16 +32,14 @@ public class StarWarsServiceTest {
 
     @Test
     public void shouldReturnTitleOfMovie(){
-        StarWarsService starWarsService = new StarWarsService();
-        String title = starWarsService.fetchMovieInfo().getTitle();
+        String title = testStarWarsService.fetchMovieInfo().getTitle();
         Assert.assertEquals("The Empire Strikes Back", title);
         Assert.assertNotNull(title);
     }
 
     @Test
     public void shouldReturnDetailsBasedOnSearch(){
-        StarWarsService starWarsService = new StarWarsService();
-        String name = starWarsService.fetchInfoByName("Luke").getResults().get(0).getName();
+        String name = testStarWarsService.fetchInfoByName("Luke").getResults().get(0).getName();
         Assert.assertEquals("Luke Skywalker", name);
 
     }
