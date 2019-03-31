@@ -6,15 +6,8 @@ import org.junit.Test;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
-import static org.junit.Assert.*;
-
 public class StarWarsServiceTest {
 
-    @Test
-    public void shouldReturnTitle() {
-        StarWarsService starWarsService = new StarWarsService();
-        Assert.assertEquals("The Empire Strikes Back", starWarsService.fetchStarWarsInfo().getCharacters());
-    }
 
     @Test
     public void shouldReturn200ResponseCode(){
@@ -29,4 +22,14 @@ public class StarWarsServiceTest {
 
         Assert.assertEquals(200, response.getStatusCodeValue());
     }
+
+    @Test
+    public void test(){
+        StarWarsService starWarsService = new StarWarsService();
+        String title = starWarsService.fetchMovieInfo().getTitle();
+        Assert.assertEquals("The Empire Strikes Back", title);
+    }
+
+
+
 }

@@ -17,14 +17,16 @@ public class SwapiController {
     @RequestMapping("/")
     public ModelAndView showMovieCharacters(){
         ModelAndView modelAndView = new ModelAndView("home");
-        modelAndView.addObject("title", starWarsService.fetchStarWarsInfo().getTitle());
+        modelAndView.addObject("title", starWarsService.fetchMovieInfo().getTitle());
 
-        ArrayList<String> characters = starWarsService.fetchStarWarsInfo().getCharacters();
-        for(String character: characters){
-            modelAndView.addObject("character",character);
+        ArrayList<String> characterURLS = starWarsService.fetchMovieInfo().getCharacters();
+        ArrayList<String> names = new ArrayList<>();
+        for(String url: characterURLS) {
+            names.add(starWarsService.fetchCharacterInfo(url).getName());
         }
-
+        modelAndView.addObject("names",names);
         return modelAndView;
     }
+
 
 }

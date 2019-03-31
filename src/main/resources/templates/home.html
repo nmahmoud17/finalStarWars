@@ -7,7 +7,10 @@
 <body>
 
 <p th:text="${title}"></p>
-<p th:text="${character}"></p>
+<div th:each="name: ${names}">
+    <p th:text ="${name}"></p>
+
+</div>
 
 
 </body>
