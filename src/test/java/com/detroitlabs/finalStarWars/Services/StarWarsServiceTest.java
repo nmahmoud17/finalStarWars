@@ -24,10 +24,11 @@ public class StarWarsServiceTest {
     }
 
     @Test
-    public void test(){
+    public void shouldReturnTitleOfMovie(){
         StarWarsService starWarsService = new StarWarsService();
         String title = starWarsService.fetchMovieInfo().getTitle();
         Assert.assertEquals("The Empire Strikes Back", title);
+        Assert.assertNotNull(title);
     }
 
 
