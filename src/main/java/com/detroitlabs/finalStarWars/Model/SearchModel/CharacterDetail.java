@@ -1,11 +1,12 @@
-package com.detroitlabs.finalStarWars.Model;
+package com.detroitlabs.finalStarWars.Model.SearchModel;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
-public class CharacterInfo {
+public class CharacterDetail {
+
     private String name;
     private String birthYear;
     private String gender;
@@ -44,4 +45,5 @@ public class CharacterInfo {
     public void setHomeworld(String homeworld) {
         this.homeworld = homeworld;
     }
+
 }

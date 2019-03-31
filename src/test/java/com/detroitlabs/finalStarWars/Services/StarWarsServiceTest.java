@@ -1,6 +1,6 @@
 package com.detroitlabs.finalStarWars.Services;
 
-import com.detroitlabs.finalStarWars.Model.MovieInfo;
+import com.detroitlabs.finalStarWars.Model.FilmAndCharacterModel.MovieInfo;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.http.*;
@@ -29,6 +29,14 @@ public class StarWarsServiceTest {
         String title = starWarsService.fetchMovieInfo().getTitle();
         Assert.assertEquals("The Empire Strikes Back", title);
         Assert.assertNotNull(title);
+    }
+
+    @Test
+    public void shouldReturnDetailsBasedOnSearch(){
+        StarWarsService starWarsService = new StarWarsService();
+        String name = starWarsService.fetchInfoByName("Luke").getResults().get(0).getName();
+        Assert.assertEquals("Luke Skywalker", name);
+
     }
 
 

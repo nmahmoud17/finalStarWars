@@ -7,9 +7,10 @@
 <body>
 
 <p th:text="${title}"></p>
-<div th:each="name: ${names}">
-    <p th:text ="${name}"></p>
-
+<div th:each="character: ${characters}">
+    <form th:action="@{/details}">
+        <input name="characterName" type="text" th:value="${character.getName()}">
+    </form>
 </div>
 
 

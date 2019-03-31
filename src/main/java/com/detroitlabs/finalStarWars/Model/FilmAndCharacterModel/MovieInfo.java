@@ -1,5 +1,6 @@
-package com.detroitlabs.finalStarWars.Model;
+package com.detroitlabs.finalStarWars.Model.FilmAndCharacterModel;
 
+import com.detroitlabs.finalStarWars.Model.FilmAndCharacterModel.Characters;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
