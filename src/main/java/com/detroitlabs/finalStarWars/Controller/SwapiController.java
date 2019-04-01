@@ -40,7 +40,7 @@ public class SwapiController {
 //    @RequestMapping("/details")
 //    public ModelAndView showCharacterDetails(@RequestParam("characterName") String characterName) {
 //        ModelAndView modelAndView = new ModelAndView("detailsPage");
-
+//
 //
 //        CharacterDetail characterDetail = starWarsService.fetchCharacterInfoByName(characterName).getResults().get(0);
 //
@@ -59,11 +59,18 @@ public class SwapiController {
 //    }
 
     @RequestMapping("/details/{characterName}")
-    public String showDetails(@PathVariable String characterName,ModelMap modelMap){
+    public String showCharacterDetails(@PathVariable String characterName,ModelMap modelMap){
         CharacterDetail characterDetail = starWarsService.fetchCharacterInfoByName(characterName).getResults().get(0);
 
         modelMap.put("name",characterDetail.getName());
+        modelMap.put("birthYear",characterDetail.getBirthYear());
+        modelMap.put("gender",characterDetail.getGender());
 
+        String planetUrl = characterDetail.getHomeworld();
+
+        String planetName = starWarsService.fetchPlanetInfo(planetUrl).getName();
+
+        modelMap.put("planet",planetName);
         return "detailsPage";
 
     }
