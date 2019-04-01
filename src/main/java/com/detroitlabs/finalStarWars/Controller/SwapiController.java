@@ -5,10 +5,10 @@ import com.detroitlabs.finalStarWars.Model.SearchModel.CharacterDetail;
 import com.detroitlabs.finalStarWars.Services.StarWarsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class SwapiController {
     private StarWarsService starWarsService;
 
     @RequestMapping("/")
-    public ModelAndView showMovieCharacters(){
+    public ModelAndView showMovieInfoAndCharacters(){
         ModelAndView modelAndView = new ModelAndView("home");
         modelAndView.addObject("title", starWarsService.fetchMovieInfo().getTitle());
 
@@ -32,28 +32,39 @@ public class SwapiController {
         }
 
         modelAndView.addObject("characters",characters);
+        modelAndView.addObject("opening",starWarsService.fetchOpeningCrawl());
 
         return modelAndView;
     }
 
-    @RequestMapping("/details")
-    public ModelAndView showCharacterDetails(@RequestParam("characterName") String characterName) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("detailsPage");
+//    @RequestMapping("/details")
+//    public ModelAndView showCharacterDetails(@RequestParam("characterName") String characterName) {
+//        ModelAndView modelAndView = new ModelAndView("detailsPage");
 
-        CharacterDetail characterDetail = starWarsService.fetchInfoByName(characterName).getResults().get(0);
+//
+//        CharacterDetail characterDetail = starWarsService.fetchCharacterInfoByName(characterName).getResults().get(0);
+//
+//        modelAndView.addObject("name",characterDetail.getName());
+//        modelAndView.addObject("birthYear",characterDetail.getBirthYear());
+//        modelAndView.addObject("gender",characterDetail.getGender());
+//
+//        String planetUrl = characterDetail.getHomeworld();
+//
+//        String planetName = starWarsService.fetchPlanetInfo(planetUrl).getName();
+//
+//        modelAndView.addObject("planet",planetName);
+//
+//        return modelAndView;
+//
+//    }
 
-        modelAndView.addObject("name",characterDetail.getName());
-        modelAndView.addObject("birthYear",characterDetail.getBirthYear());
-        modelAndView.addObject("gender",characterDetail.getGender());
+    @RequestMapping("/details/{characterName}")
+    public String showDetails(@PathVariable String characterName,ModelMap modelMap){
+        CharacterDetail characterDetail = starWarsService.fetchCharacterInfoByName(characterName).getResults().get(0);
 
-        String planetUrl = characterDetail.getHomeworld();
+        modelMap.put("name",characterDetail.getName());
 
-        String planetName = starWarsService.fetchPlanetInfo(planetUrl).getName();
-
-        modelAndView.addObject("planet",planetName);
-
-        return modelAndView;
+        return "detailsPage";
 
     }
 

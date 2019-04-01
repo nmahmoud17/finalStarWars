@@ -39,7 +39,7 @@ public class StarWarsServiceTest {
 
     @Test
     public void shouldReturnDetailsBasedOnSearch(){
-        String name = testStarWarsService.fetchInfoByName("Luke").getResults().get(0).getName();
+        String name = testStarWarsService.fetchCharacterInfoByName("Luke").getResults().get(0).getName();
         Assert.assertEquals("Luke Skywalker", name);
 
     }

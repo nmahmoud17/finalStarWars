@@ -38,7 +38,7 @@ public class StarWarsService {
     }
 
 
-    public AllSearchResults fetchInfoByName(String characterName){
+    public AllSearchResults fetchCharacterInfoByName(String characterName){
         addHeaders();
         HttpEntity<String> httpEntity = new HttpEntity<>(headers);
         ResponseEntity<AllSearchResults> responseEntity = restTemplate.exchange("https://swapi.co/api/people/?search=" +characterName,HttpMethod.GET,httpEntity,AllSearchResults.class);
@@ -53,6 +53,10 @@ public class StarWarsService {
 
         return  responseEntity.getBody();
 
+    }
+
+    public String fetchOpeningCrawl(){
+        return fetchMovieInfo().getOpeningCrawl();
     }
 
 
