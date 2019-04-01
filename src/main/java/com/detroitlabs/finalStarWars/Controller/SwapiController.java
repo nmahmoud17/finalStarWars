@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
@@ -37,26 +36,6 @@ public class SwapiController {
         return modelAndView;
     }
 
-//    @RequestMapping("/details")
-//    public ModelAndView showCharacterDetails(@RequestParam("characterName") String characterName) {
-//        ModelAndView modelAndView = new ModelAndView("detailsPage");
-//
-//
-//        CharacterDetail characterDetail = starWarsService.fetchCharacterInfoByName(characterName).getResults().get(0);
-//
-//        modelAndView.addObject("name",characterDetail.getName());
-//        modelAndView.addObject("birthYear",characterDetail.getBirthYear());
-//        modelAndView.addObject("gender",characterDetail.getGender());
-//
-//        String planetUrl = characterDetail.getHomeworld();
-//
-//        String planetName = starWarsService.fetchPlanetInfo(planetUrl).getName();
-//
-//        modelAndView.addObject("planet",planetName);
-//
-//        return modelAndView;
-//
-//    }
 
     @RequestMapping("/details/{characterName}")
     public String showCharacterDetails(@PathVariable String characterName,ModelMap modelMap){

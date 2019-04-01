@@ -8,13 +8,6 @@
 <body>
 <h2 th:text="${title}"></h2>
 <p th:text="${opening}"></p>
-<!--<div th:each="character: ${characters}">-->
-    <!--<form th:action="@{/details}">-->
-        <!--<input style="border:none;" name="characterName" type="text" th:value="${character.getName()}">-->
-        <!--<input type="submit" value="See Details">-->
-    <!--</form>-->
-<!--</div>-->
-
 <div th:each="character: ${characters}">
 <a th:href="@{'/details/' + ${character.getName()}}">
 <p th:text="${character.getName()}"></p>
