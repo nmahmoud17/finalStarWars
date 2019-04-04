@@ -3,16 +3,26 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Home</title>
-</head>
 
+</head>
 <body>
-<h2 th:text="${title}"></h2>
-<p th:text="${opening}"></p>
+<h2 th:text="${title}" style="color:white"></h2>
+<p th:text="${opening}" style="color:white"></p>
 <div th:each="character: ${characters}">
 <a th:href="@{'/details/' + ${character.getName()}}">
-<p th:text="${character.getName()}"></p>
+<p th:text="${character.getName()}" style="color:white"></p>
 
 </a>
 </div>
 </body>
+<style type="text/css">
+    body{
+        background-image: url("/images/background.jpg");
+        height: 100%;
+        background-position: center;
+        background-repeat: repeat;
+        background-size: cover;
+    }
+
+</style>
 </html>
