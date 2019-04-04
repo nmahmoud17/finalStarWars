@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Details Page</title>
 </head>
-<body>
+<body style="color:white">
 
 <h2 th:text ="${name}"></h2>
 <p th:text ="'Birth Year: ' +${birthYear}"></p>
@@ -12,4 +12,15 @@
 <p th:text ="'Planet: '+ ${planet}"></p>
 
 </body>
+<style type="text/css">
+    body{
+        background-image: url("/images/stars.jpg");
+        height: 100%;
+        background-position: center;
+        background-repeat: repeat;
+        background-size: cover;
+    }
+
+
+</style>
 </html>

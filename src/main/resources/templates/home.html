@@ -5,12 +5,12 @@
     <title>Home</title>
 
 </head>
-<body>
-<h2 th:text="${title}" style="color:white"></h2>
-<p th:text="${opening}" style="color:white"></p>
+<body style="color:white">
+<h2 th:text="${title}" ></h2>
+<p th:text="${opening}" ></p>
 <div th:each="character: ${characters}">
 <a th:href="@{'/details/' + ${character.getName()}}">
-<p th:text="${character.getName()}" style="color:white"></p>
+<p th:text="${character.getName()}"></p>
 
 </a>
 </div>

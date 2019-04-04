@@ -38,7 +38,7 @@ public class SwapiController {
 
 
     @RequestMapping("/details/{characterName}")
-    public String showCharacterDetails(@PathVariable String characterName,ModelMap modelMap){
+    public String showCharacterDetails(@PathVariable String characterName, ModelMap modelMap){
         CharacterDetail characterDetail = starWarsService.fetchCharacterInfoByName(characterName).getResults().get(0);
 
         modelMap.put("name",characterDetail.getName());
